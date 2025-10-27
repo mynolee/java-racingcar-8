@@ -61,4 +61,10 @@ public class Application {
         System.out.println("시도할 회수는 몇회인가요?");
         return Integer.parseInt(Console.readLine());
     }
+
+    private static void validateTryTimes(int tryTimes) {
+        if (tryTimes <= 0) {
+            throw new IllegalArgumentException("시도 횟수는 양의 정수여야 합니다.");
+        }
+    }
 }
