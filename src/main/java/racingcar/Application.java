@@ -110,4 +110,20 @@ public class Application {
         }
         System.out.println();
     }
+
+    private static List<String> findWinners(Map<String, Integer> scores) {
+        int maxScore = Collections.max(scores.values());
+        List<String> winners = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : scores.entrySet()) {
+            if (entry.getValue() == maxScore) {
+                winners.add(entry.getKey());
+            }
+        }
+        return winners;
+    }
+
+    private static void printWinners(List<String> winners) {
+        System.out.println("\n최종 우승자 : " + String.join(", ", winners));
+    }
 }
