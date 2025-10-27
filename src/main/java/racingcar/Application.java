@@ -48,4 +48,12 @@ public class Application {
             }
         }
     }
+
+    private static Map<String, Integer> initializeScores(List<String> names) {
+        Map<String, Integer> scores = new LinkedHashMap<>();
+        for (String name : names) {
+            scores.put(name, 0);
+        }
+        return scores;
+    }
 }
