@@ -67,4 +67,12 @@ public class Application {
             throw new IllegalArgumentException("시도 횟수는 양의 정수여야 합니다.");
         }
     }
+
+    public static boolean shouldMoveForward(int randomNumber) {
+        return randomNumber >= 4;
+    }
+
+    public static int generateRandomNumber() {
+        return Randoms.pickNumberInRange(0, 9);
+    }
 }
