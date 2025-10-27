@@ -68,11 +68,46 @@ public class Application {
         }
     }
 
+    public static void playRacingGame(
+            List<String> carNames,
+            Map<String, Integer> carScores,
+            int tryTimes,
+            Supplier<Integer> randomSupplier
+    ) {
+        System.out.println("\n실행 결과");
+
+        for (int i = 0; i < tryTimes; i++) {
+            raceOnce(carNames, carScores, randomSupplier);
+            System.out.println();
+        }
+    }
+
+    private static void raceOnce(List<String> carNames, Map<String, Integer> carScores, Supplier<Integer> randomSupplier) {
+        for (String name : carNames) {
+            moveCarIfPossible(carScores, name, randomSupplier.get());
+            printCarProgress(name, carScores.get(name));
+        }
+    }
+
+    private static void moveCarIfPossible(Map<String, Integer> carScores, String name, int randomNumber) {
+        if (shouldMoveForward(randomNumber)) {
+            carScores.put(name, carScores.get(name) + 1);
+        }
+    }
+
     public static boolean shouldMoveForward(int randomNumber) {
         return randomNumber >= 4;
     }
 
     public static int generateRandomNumber() {
         return Randoms.pickNumberInRange(0, 9);
+    }
+
+    private static void printCarProgress(String name, int score) {
+        System.out.print(name + " : ");
+        for (int i = 0; i < score; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
